@@ -1,3 +1,11 @@
+# Pour bien démarrer
+
+1. git clone https://github.com/LadghemSaid/todolist
+2. cd todoList
+3. yarn install
+4. yarn dev
+
+
 # Guide de Démarrage pour un Projet React Native avec Expo
 
 Ce guide vous aidera à démarrer un nouveau projet React Native utilisant Expo avec une configuration de base pour les environnements Android et iOS. Suivez ces étapes simples pour créer votre premier projet.
@@ -28,7 +36,7 @@ Suivez les instructions à l'écran pour choisir un modèle de projet. Pour une 
 Accédez au répertoire de votre projet nouvellement créé et démarrez-le en exécutant les commandes suivantes :
 
 cd MonProjetReactNative
-expo start
+yarn start
 
 
 Cela lancera le serveur de développement Expo et ouvrira une page dans votre navigateur avec un QR code.
