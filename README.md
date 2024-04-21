@@ -3,7 +3,12 @@
 1. git clone https://github.com/LadghemSaid/todolist
 2. cd todoList
 3. yarn install
-4. yarn dev
+4. yarn start
+
+
+<img width="458" alt="image" src="https://github.com/LadghemSaid/todolist/assets/39403972/1a4dd686-460a-457c-91e3-8f9478f5a77d"><img width="469" alt="image" src="https://github.com/LadghemSaid/todolist/assets/39403972/05097277-696c-475e-8a03-8c9f83e8ce14">
+
+
 
 
 # Guide de Démarrage pour un Projet React Native avec Expo
