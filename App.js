@@ -14,41 +14,23 @@ const App = () => {
   const [editIndex, setEditIndex] = useState(-1);
 
   const handleAddTask = () => {
-    if (task.value) {
-      if (editIndex !== -1) {
-        // Edit existing task 
-        const updatedTasks = [...tasks];
-        updatedTasks[editIndex] = task;
-        setTasks(updatedTasks);
-        setEditIndex(-1);
-      } else {
-        // Add new task 
-        setTasks([...tasks, task]);
-      }
-      setTask({ value: "", complete: false });
-    }
+    //to write
+
   };
 
   const handleEditTask = (index) => {
-    const taskToEdit = tasks[index];
-    setTask(taskToEdit);
-    setEditIndex(index);
+    //to write
+
   };
 
   const handleCompleteTask = (index) => {
-    const taskToEdit = tasks[index];
-    taskToEdit.complete = true
-    // Edit existing task 
-    const updatedTasks = [...tasks];
-    updatedTasks[index] = taskToEdit;
-    setTasks(updatedTasks);
+    //to write
+
 
   };
 
   const handleDeleteTask = (index) => {
-    const updatedTasks = [...tasks];
-    updatedTasks.splice(index, 1);
-    setTasks(updatedTasks);
+    //to write
   };
 
   const renderItem = ({ item, index }) => (
@@ -82,11 +64,11 @@ const App = () => {
           style={styles.input}
           placeholder="Ajouter une tache"
           value={task.value}
-          onChangeText={(text) => setTask({ value: text, complete: false })}
+          onChangeText={() => { }}
         />
         <TouchableOpacity
           style={styles.addButton}
-          onPress={handleAddTask}>
+          onPress={() => { }}>
           <Text style={styles.addButtonText}>
             {editIndex !== -1 ? "Modifier" : "Ajouter"}
           </Text>
@@ -94,7 +76,7 @@ const App = () => {
       </View>
 
       <FlatList
-        data={tasks}
+        data={[]}
         renderItem={renderItem}
         keyExtractor={(item, index) => index.toString()}
       />
@@ -107,60 +89,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 40,
     marginTop: 40,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 20,
-  },
-  heading: {
-    fontSize: 30,
-    fontWeight: "bold",
-    marginBottom: 7,
-    color: "green",
-  },
-  input: {
-    borderWidth: 3,
-    borderColor: "#ccc",
-    padding: 10,
-    marginBottom: 10,
-    borderRadius: 10,
-    fontSize: 18,
-  },
-  addButton: {
-    backgroundColor: "green",
-    padding: 10,
-    borderRadius: 5,
-    marginBottom: 10,
-  },
-  addButtonText: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center",
-    fontSize: 18,
-  },
-  task: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 15,
-    fontSize: 18,
-  },
-
-  taskButtons: {
-    flexDirection: "row",
-  },
-  editButton: {
-    marginRight: 10,
-    color: "green",
-    fontWeight: "bold",
-    fontSize: 18,
-  },
-  deleteButton: {
-    color: "red",
-    fontWeight: "bold",
-    fontSize: 18,
-  },
+  }
 });
 
 export default App;
