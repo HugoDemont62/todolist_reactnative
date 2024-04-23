@@ -89,7 +89,43 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 40,
     marginTop: 40,
-  }
+  },
+  heading: {
+    fontSize: 30,
+    fontWeight: "bold",
+    marginBottom: 20,
+  },
+  input: {
+    padding: 10,
+    borderColor: "#333",
+    borderWidth: 1,
+    marginBottom: 10,
+  },
+  addButton: {
+    backgroundColor: "#333",
+    padding: 10,
+    borderRadius: 5,
+    alignItems: "center",
+  },
+  addButtonText: {
+    color: "#fff",
+    fontSize: 20,
+  },
+
+  task: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 10,
+  },
+  editButton: {
+    color: "#333",
+    fontSize: 16,
+  },
+  deleteButton: {
+    color: "red",
+    fontSize: 16,
+  },
 });
 
 export default App;
