@@ -1,44 +1,60 @@
-import React, { useState } from "react";
+import React, {useState} from 'react';
 import {
-  View,
+  FlatList,
+  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  FlatList,
-  StyleSheet,
-} from "react-native";
+  View,
+} from 'react-native';
 
 const App = () => {
-  const [task, setTask] = useState({ value: "", complete: false });
+  const [task, setTask] = useState({value: '', complete: false});
   const [tasks, setTasks] = useState([]);
   const [editIndex, setEditIndex] = useState(-1);
 
   const handleAddTask = () => {
-    //to write
+    if (task.value === '') {
+      return;
+    }
 
+    if (editIndex !== -1) {
+      const newTasks = [...tasks];
+      newTasks[editIndex] = task;
+      setTasks(newTasks);
+      setEditIndex(-1);
+    } else {
+      setTasks([...tasks, task]);
+    }
+    setTask({value: '', complete: false});
   };
 
   const handleEditTask = (index) => {
-    //to write
-
+    setTask(tasks[index]);
+    setEditIndex(index);
   };
 
   const handleCompleteTask = (index) => {
-    //to write
-
-
+    const newTasks = [...tasks];
+    newTasks[index].complete = !newTasks[index].complete;
+    setTasks(newTasks);
   };
 
   const handleDeleteTask = (index) => {
-    //to write
+    const newTasks = [...tasks];
+    newTasks.splice(index, 1);
+    setTasks(newTasks);
   };
 
-  const renderItem = ({ item, index }) => (
+  const renderItem = ({item, index}) => (
     <View style={styles.task}>
       <TouchableOpacity
         onPress={() => handleCompleteTask(index)}>
         <Text
-          style={{ fontSize: 19, textDecorationLine: !item.complete ? "none" : "line-through" }}>{item.value}</Text>
+          style={{
+            fontSize: 19,
+            textDecorationLine: !item.complete ? 'none' : 'line-through',
+          }}>{item.value}</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
@@ -57,26 +73,31 @@ const App = () => {
   return (
     <View style={styles.container}>
       <View style={{
-        marginBottom: 30
+        marginBottom: 30,
       }}>
         <Text style={styles.heading}>My Todo List</Text>
         <TextInput
           style={styles.input}
           placeholder="Ajouter une tache"
           value={task.value}
-          onChangeText={() => { }}
+          onChangeText={(text) => {
+            setTask({
+              value: text,
+              complete: false,
+            });
+          }}
         />
         <TouchableOpacity
           style={styles.addButton}
-          onPress={() => { }}>
+          onPress={ handleAddTask}>
           <Text style={styles.addButtonText}>
-            {editIndex !== -1 ? "Modifier" : "Ajouter"}
+            {editIndex !== -1 ? 'Modifier' : 'Ajouter'}
           </Text>
         </TouchableOpacity>
       </View>
 
       <FlatList
-        data={[]}
+        data={tasks}
         renderItem={renderItem}
         keyExtractor={(item, index) => index.toString()}
       />
@@ -92,38 +113,37 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 30,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: 20,
   },
   input: {
     padding: 10,
-    borderColor: "#333",
+    borderColor: '#333',
     borderWidth: 1,
     marginBottom: 10,
   },
   addButton: {
-    backgroundColor: "#333",
+    backgroundColor: '#333',
     padding: 10,
     borderRadius: 5,
-    alignItems: "center",
+    alignItems: 'center',
   },
   addButtonText: {
-    color: "#fff",
+    color: '#fff',
     fontSize: 20,
   },
-
   task: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     marginBottom: 10,
   },
   editButton: {
-    color: "#333",
+    color: '#333',
     fontSize: 16,
   },
   deleteButton: {
-    color: "red",
+    color: 'red',
     fontSize: 16,
   },
 });
